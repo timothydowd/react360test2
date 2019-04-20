@@ -48,12 +48,13 @@ class Button extends React.Component {
   render () {
     return (
       <Animated.View
+        billboarding={'on'}
         style={{
           alignItems: 'center',
           flexDirection: 'row',
           margin: 0.0125,
           transform: [
-            {translateZ: this.state.animatedTranslation},
+            {translateY: this.state.animatedTranslation},
           ],
           width: 0.7,
         }}

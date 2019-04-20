@@ -16,7 +16,8 @@ class Canvas extends React.Component {
 
   render() {
     return (
-      <Pano source={this.state.panoImage}/>
+      // <Pano source={this.state.panoImage}/>
+      <Pano source={asset('projectroom.jpeg')}/>
     );
   }
 

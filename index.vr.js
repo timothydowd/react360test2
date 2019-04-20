@@ -4,33 +4,34 @@ import {
   View,
 } from 'react-vr';
 import Canvas from './components/Canvas';
-import UI from './components/UI';
+// import UI from './components/UI';
 import axios from 'axios'
+import Pointer1 from './components/Pointer1'
 
 // import console = require('console');
 
-const Config = [
-  {
-    key: 0,
-    imageSrc: '',
-    buttonImageSrc: 'pointer.png',
-  },
-  {
-    key: 1,
-    imageSrc: '',
-    buttonImageSrc: 'pointer.png',
-  },
-  {
-    key: 2,
-    imageSrc: '',
-    buttonImageSrc: 'pointer.png',
-  },
-  {
-    key: 3,
-    imageSrc: '',
-    buttonImageSrc: 'pointer.png',
-  }
-];
+// const Config = [
+//   {
+//     key: 0,
+//     imageSrc: '',
+//     buttonImageSrc: 'pointer.png',
+//   },
+//   {
+//     key: 1,
+//     imageSrc: '',
+//     buttonImageSrc: 'pointer.png',
+//   },
+//   {
+//     key: 2,
+//     imageSrc: '',
+//     buttonImageSrc: 'pointer.png',
+//   },
+//   {
+//     key: 3,
+//     imageSrc: '',
+//     buttonImageSrc: 'pointer.png',
+//   }
+// ];
 
 export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
 
@@ -39,7 +40,8 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
 
     this.state = {
       panoImage: {uri:''},
-      restaurantId: ''
+      restaurantId: '',
+      tables: [{coords: [-7, -1, -2]}, {coords: [-3, -1, -4]}, {coords: [-5, 3, 4]}]
     };
   }
 
@@ -49,12 +51,14 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
     return (
       <View>
         <Canvas panoImage={this.state.panoImage} />
-        <UI
+        {/* <UI
           buttonConfig={Config}
           onClick={(key)=>{
             this.setState({panoImage: Config[key].imageSrc});
           }}
-        />
+        /> */}
+        
+        <Pointer1 tables={this.state.tables}/>
 
       </View>
     );
@@ -70,10 +74,9 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
     }).then(() =>{
       this.setUrlToState()
     })
-    
-
-    
+  
   }
+  
 setUrlToState=()=>{
   // componentDidUpdate(prevState){
   //   if( prevState.restaurantId !== this.state.restaurantId){
