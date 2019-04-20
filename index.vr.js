@@ -4,34 +4,11 @@ import {
   View,
 } from 'react-vr';
 import Canvas from './components/Canvas';
-// import UI from './components/UI';
+
 import axios from 'axios'
-import Pointer1 from './components/Pointer1'
+import Pointers from './components/Pointers'
 
-// import console = require('console');
 
-// const Config = [
-//   {
-//     key: 0,
-//     imageSrc: '',
-//     buttonImageSrc: 'pointer.png',
-//   },
-//   {
-//     key: 1,
-//     imageSrc: '',
-//     buttonImageSrc: 'pointer.png',
-//   },
-//   {
-//     key: 2,
-//     imageSrc: '',
-//     buttonImageSrc: 'pointer.png',
-//   },
-//   {
-//     key: 3,
-//     imageSrc: '',
-//     buttonImageSrc: 'pointer.png',
-//   }
-// ];
 
 export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
 
@@ -45,8 +22,8 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
         {tableId: 1, coords: [-6, -1, -2]}, 
         {tableId: 2, coords: [-7, 0, 2]}, 
         {tableId: 3, coords: [-3, 0, 3]},
-        {tableId: 4, coords: [-4, 2, 8]},
-        {tableId: 5, coords: [-7.5, 2.75, 8]}
+        {tableId: 4, coords: [-4, 1.5, 8]},
+        {tableId: 5, coords: [-7.5, 2.25, 8]}
       ]
     };
   }
@@ -57,14 +34,9 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
     return (
       <View>
         <Canvas panoImage={this.state.panoImage} />
-        {/* <UI
-          buttonConfig={Config}
-          onClick={(key)=>{
-            this.setState({panoImage: Config[key].imageSrc});
-          }}
-        /> */}
+       
         
-        <Pointer1 tables={this.state.tables}/>
+        <Pointers tables={this.state.tables}/>
 
       </View>
     );
