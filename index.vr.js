@@ -41,7 +41,13 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
     this.state = {
       panoImage: {uri:''},
       restaurantId: '',
-      tables: [{coords: [-7, -1, -2]}, {coords: [-3, -1, -4]}, {coords: [-5, 3, 4]}]
+      tables: [
+        {tableId: 1, coords: [-6, -1, -2]}, 
+        {tableId: 2, coords: [-7, 0, 2]}, 
+        {tableId: 3, coords: [-3, 0, 3]},
+        {tableId: 4, coords: [-4, 2, 8]},
+        {tableId: 5, coords: [-7.5, 2.75, 8]}
+      ]
     };
   }
 
