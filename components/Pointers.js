@@ -7,6 +7,7 @@ import {
   VrButton,
 } from 'react-vr';
 import { Easing } from 'react-native'
+import Pointer from './Pointer'
 
 
 class Pointers extends React.Component {
@@ -55,8 +56,8 @@ class Pointers extends React.Component {
 
   
 
-  onPointerClick = () => {
-    console.log('clicky');
+  onPointerClick = (key) => {
+    console.log('clicky', key);
   }
 
   onPointerEnter = () => {
@@ -73,9 +74,53 @@ class Pointers extends React.Component {
     
   }
 
-  onExit
+  
+  // render () {
+  //   return (
+  //     <View>
+        
+  //       {this.props.tables.map(table => {
+          
+  //         return(
+  //           <View key={table.tableId} >
+  //             <Animated.View key={table.tableId}
+  //               billboarding={'on'}
+  //               style={{
+  //                 // alignItems: 'center',
+  //                 // flexDirection: 'row',
+  //                 // margin: 0.0125,
+  //                 transform: [
+  //                   {translateY: this.state.animationValue},
+  //                   // {rotateX: 5},
+  //                   {translate: table.coords},
+  //                 ],
+                
+  //                 width: 0.7,
+  //               }}
+  //             >
+  //               <VrButton key={table.tableId}
+  //                 onClick={ () => {this.onPointerClick(table.tableId)} }
+  //                 onEnter={this.onPointerEnter}
+  //                 onExit={this.onPointerExit}
+  //               >
+  //                 <Image
+  //                   style={{
+  //                     width: 0.7,
+  //                     height: 0.7,
+  //                   }}
+  //                   source={asset('pointer.png')}
+  //                 >
+  //                 </Image>
+  //               </VrButton>
+  //             </Animated.View>
+  //           </View>
+  //         )
+  //       })}
+        
+  //     </View>
+  //   );
+  // }
 
- 
   render () {
     return (
       <View>
@@ -83,44 +128,15 @@ class Pointers extends React.Component {
         {this.props.tables.map(table => {
           
           return(
-            <View key={table.tableId} >
-              <Animated.View
-                billboarding={'on'}
-                style={{
-                  // alignItems: 'center',
-                  // flexDirection: 'row',
-                  // margin: 0.0125,
-                  transform: [
-                    {translateY: this.state.animationValue},
-                    // {rotateX: 5},
-                    {translate: table.coords},
-                  ],
-                
-                  width: 0.7,
-                }}
-              >
-                <VrButton
-                  onClick={this.onPointerClick}
-                  onEnter={this.onPointerEnter}
-                  onExit={this.onPointerExit}
-                >
-                  <Image
-                    style={{
-                      width: 0.7,
-                      height: 0.7,
-                    }}
-                    source={asset('pointer.png')}
-                  >
-                  </Image>
-                </VrButton>
-              </Animated.View>
-            </View>
+            <Pointer tableId={table.tableId} coords={table.coords}/>
           )
         })}
         
       </View>
     );
   }
+
+
 };
 
 export default Pointers;
