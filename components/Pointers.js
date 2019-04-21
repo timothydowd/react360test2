@@ -128,7 +128,7 @@ class Pointers extends React.Component {
         {this.props.tables.map(table => {
           
           return(
-            <Pointer tableId={table.tableId} coords={table.coords}/>
+            <Pointer key={table.tableId} tableId={table.tableId} coords={table.coords}/>
           )
         })}
         

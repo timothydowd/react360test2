@@ -65,8 +65,6 @@ setUrlToState=()=>{
       
     })
     }
-  
-  
 };
 
 AppRegistry.registerComponent('GDVR_REACTVR_SITEPOINT_GALLERY', () => GDVR_REACTVR_SITEPOINT_GALLERY);

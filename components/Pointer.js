@@ -5,6 +5,7 @@ import {
   Image,
   View,
   VrButton,
+  Text
 } from 'react-vr';
 import { Easing } from 'react-native'
 
@@ -17,7 +18,9 @@ class Pointer extends React.Component {
     this.state = {
       // animatedTranslation: new Animated.Value(0),
       animationValue: new Animated.Value(1.5),
-      pointerEntered: false
+      pointerEntered: false,
+      pointerImg: 'pointer.png',
+      bookingTextOpacity: 0
       
     };
   }
@@ -53,43 +56,42 @@ class Pointer extends React.Component {
 
   }
 
-  
-
-  onPointerClick = (key) => {
-    console.log('clicky', key);
+  onPointerClick = () => {
+    console.log('clicky');
   }
 
   onPointerEnter = () => {
     console.log('enter')
-    this.setState({pointerEntered: true})
+    this.setState({pointerEntered: true, pointerImg: 'reserve_table2.png', bookingTextOpacity: 100})
+
+
   }
 
   onPointerExit = () => {
     console.log('on exit')
-    Promise.resolve(this.setState({pointerEntered: false}))
+    Promise.resolve(this.setState({pointerEntered: false, pointerImg: 'pointer.png', bookingTextOpacity: 0}))
     .then(() => {
       this.animation()
     })
     
   }
 
-  
   render () {
     return (
-            <View key={this.props.tableId} >
-              <Animated.View key={this.props.tableId}
+            <View>
+              <Animated.View 
                 billboarding={'on'}
                 style={{
                   transform: [
                     {translateY: this.state.animationValue},
                     {translate: this.props.coords},
                   ],
-                
+                  
                   width: 0.7,
                 }}
               >
-                <VrButton key={this.props.tableId}
-                  onClick={ () => {this.onPointerClick(this.props.tableId)} }
+                <VrButton 
+                  onClick={ () => {this.onPointerClick()} }
                   onEnter={this.onPointerEnter}
                   onExit={this.onPointerExit}
                 >
@@ -98,16 +100,23 @@ class Pointer extends React.Component {
                       width: 0.7,
                       height: 0.7,
                     }}
-                    source={asset('pointer.png')}
+                    source={asset(this.state.pointerImg)}
                   >
+                  {/* <Text
+                    style={{
+                        width: 2,
+                        height: 2,
+                        fontSize: 0.2,
+                        opacity: this.state.bookingTextOpacity
+                      }}
+                  
+                  >
+                      Make Reservation?
+                  </Text> */}
                   </Image>
                 </VrButton>
               </Animated.View>
             </View>
-         
-       
-        
-      
     );
   }
 };
