@@ -41,8 +41,8 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
         <Canvas panoImage={this.state.panoImage} />
        
         
-        {this.state.pointer_location &&  <Pointers pointerData={this.state.pointer_location} restaurantId={this.state.restaurantId}/>}
-        
+        {/* {this.state.pointer_location &&  <Pointers pointerData={this.state.pointer_location} restaurantId={this.state.restaurantId}/>} */}
+        <Pointers pointerData={this.state.pointer_location} restaurantId={this.state.restaurantId}/>
 
       </View>
     );

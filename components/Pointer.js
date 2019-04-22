@@ -29,7 +29,7 @@ class Pointer extends React.Component {
   }
 
   componentDidMount(){
-    this.animation();
+    // this.animation();
 
   }
 
@@ -54,7 +54,7 @@ class Pointer extends React.Component {
         }
       )
     ]).start(()=> {
-      this.animation();
+      // this.animation();
     });
 
   }
@@ -63,7 +63,7 @@ class Pointer extends React.Component {
     const tableId = this.props.tableId
     
     console.log('tableId: ', tableId)
-    axios.post('https://projectdatabase360.herokuapp.com/api/communication', 
+    axios.patch('https://projectdatabase360.herokuapp.com/api/communication', 
     { patched_table_id: tableId }
     )
     .then((res) => console.log(res))
@@ -77,14 +77,13 @@ class Pointer extends React.Component {
     
     this.setState({pointerEntered: true, pointerImg: 'reserve_table2.png', bookingTextOpacity: 100})
 
-
   }
 
   onPointerExit = () => {
     
     Promise.resolve(this.setState({pointerEntered: false, pointerImg: 'pointer.png', bookingTextOpacity: 0}))
     .then(() => {
-      this.animation()
+      // this.animation()
     })
     
   }
