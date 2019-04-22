@@ -8,6 +8,9 @@ import {
   Text
 } from 'react-vr';
 import { Easing } from 'react-native'
+import axios from 'axios'
+
+
 
 
 class Pointer extends React.Component {
@@ -57,18 +60,28 @@ class Pointer extends React.Component {
   }
 
   onPointerClick = () => {
-    console.log('clicky');
+    const tableId = this.props.tableId
+    
+    console.log('tableId: ', tableId)
+    axios.post('https://projectdatabase360.herokuapp.com/api/communication', 
+    { patched_table_id: tableId }
+    )
+    .then((res) => console.log(res))
+
+
+    
+
   }
 
   onPointerEnter = () => {
-    console.log('enter')
+    
     this.setState({pointerEntered: true, pointerImg: 'reserve_table2.png', bookingTextOpacity: 100})
 
 
   }
 
   onPointerExit = () => {
-    console.log('on exit')
+    
     Promise.resolve(this.setState({pointerEntered: false, pointerImg: 'pointer.png', bookingTextOpacity: 0}))
     .then(() => {
       this.animation()
