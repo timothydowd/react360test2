@@ -54,8 +54,6 @@ class Pointers extends React.Component {
 
   }
 
-  
-
   onPointerClick = (key) => {
     console.log('clicky', key);
   }

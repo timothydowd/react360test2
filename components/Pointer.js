@@ -29,7 +29,7 @@ class Pointer extends React.Component {
   }
 
   componentDidMount(){
-    // this.animation();
+    this.animation();
 
   }
 
@@ -41,20 +41,20 @@ class Pointer extends React.Component {
       Animated.timing(
         this.state.animationValue,
         {
-          toValue: 0,
+          toValue: 1.5,
           duration: 400
         }
       ),
       Animated.timing(
         this.state.animationValue,
         {
-          toValue: 0.15,
+          toValue: 1.65,
           duration: 400,
           easing: Easing.elastic(0)
         }
       )
     ]).start(()=> {
-      // this.animation();
+      this.animation();
     });
 
   }
@@ -83,7 +83,7 @@ class Pointer extends React.Component {
     
     Promise.resolve(this.setState({pointerEntered: false, pointerImg: 'pointer.png', bookingTextOpacity: 0}))
     .then(() => {
-      // this.animation()
+      this.animation()
     })
     
   }
