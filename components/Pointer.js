@@ -48,7 +48,7 @@ class Pointer extends React.Component {
       Animated.timing(
         this.state.animationValue,
         {
-          toValue: 1.65,
+          toValue: 1.55,
           duration: 400,
           easing: Easing.elastic(0)
         }
@@ -63,14 +63,11 @@ class Pointer extends React.Component {
     const tableId = this.props.tableId
     
     console.log('tableId: ', tableId)
-    axios.patch('https://projectdatabase360.herokuapp.com/api/communication', 
-    { patched_table_id: tableId }
-    )
-    .then((res) => console.log(res))
-
-
+    // axios.patch('https://projectdatabase360.herokuapp.com/api/communication', 
+    // { patched_table_id: tableId }
+    // )
+    // .then((res) => console.log(res))
     
-
   }
 
   onPointerEnter = () => {
