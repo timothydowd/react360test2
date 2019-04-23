@@ -76,38 +76,38 @@ class Pointers extends React.Component {
 
   render () {
 
-    const hardCodedTables = {
-      tables: [
-        { id: 1, coordinates: [3.5, -2.5, -4] },
-        { id: 2, coordinates: [2.5, -1.5, 0.25] },
-        { id: 3, coordinates: [7, -1, -0.5] },
-        { id: 4, coordinates: [8, -0.25, 3.5] },
-        { id: 5, coordinates: [2.5, 0.5, 3.5] },
-        { id: 6, coordinates: [8, 1, 9] },
-        { id: 7, coordinates: [4, 1.6, 10] },
-        { id: 8, coordinates: [-3, 2, 10] },
-        { id: 9, coordinates: [-5, 3, -10] },
-      ]
-    }
+    // const hardCodedTables = {
+    //   tables: [
+    //     { id: 1, coordinates: [3.5, -2.5, -4] },
+    //     { id: 2, coordinates: [2.5, -1.5, 0.25] },
+    //     { id: 3, coordinates: [7, -1, -0.5] },
+    //     { id: 4, coordinates: [8, -0.25, 3.5] },
+    //     { id: 5, coordinates: [2.5, 0.5, 3.5] },
+    //     { id: 6, coordinates: [8, 1, 9] },
+    //     { id: 7, coordinates: [4, 1.6, 10] },
+    //     { id: 8, coordinates: [-3, 2, 10] },
+    //     { id: 9, coordinates: [-5, 3, -10] },
+    //   ]
+    // }
     
     return (
      <View>
         
-        {/* { this.props.pointerData.tables.map(table => {
+        { this.props.pointerData.tables.map(table => {
           
           return(
             <Pointer restaurantId={this.props.restaurantId} key={table.id} tableId={table.id} coords={table.coordinates}/>
             
           )
-        })} */}
+        })}
 
-        { hardCodedTables.tables.map(table => {
+        {/* { hardCodedTables.tables.map(table => {
           console.log(table)
           return(
             <Pointer restaurantId={this.props.restaurantId} key={table.id} tableId={table.id} coords={table.coordinates}/>
             
           )
-        })}
+        })} */}
         
       </View>
     );
