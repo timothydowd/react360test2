@@ -15,9 +15,11 @@ class Canvas extends React.Component {
   }
 
   render() {
+    
     return (
-      // <Pano source={this.state.panoImage}/>
-      <Pano source={asset('other_restaurant.jpg')}/>
+      
+      <Pano source={this.state.panoImage}/>
+      // <Pano source={asset('other_restaurant.jpg')}/>
     );
   }
 

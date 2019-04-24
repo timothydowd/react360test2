@@ -35,27 +35,28 @@ class Pointer extends React.Component {
 
   animation(){
 
-    if(!this.state.pointerEntered)
+    if(!this.state.pointerEntered){
 
-    Animated.sequence([
-      Animated.timing(
-        this.state.animationValue,
-        {
-          toValue: 1.5,
-          duration: 400
-        }
-      ),
-      Animated.timing(
-        this.state.animationValue,
-        {
-          toValue: 1.55,
-          duration: 400,
-          easing: Easing.elastic(0)
-        }
-      )
-    ]).start(()=> {
-      this.animation();
-    });
+      Animated.sequence([
+        Animated.timing(
+          this.state.animationValue,
+          {
+            toValue: 1.5,
+            duration: 600
+          }
+        ),
+        Animated.timing(
+          this.state.animationValue,
+          {
+            toValue: 1.58,
+            duration: 600,
+            easing: Easing.elastic(0)
+          }
+        )
+      ]).start(()=> {
+        this.animation();
+      });
+    } 
 
   }
 
@@ -63,37 +64,70 @@ class Pointer extends React.Component {
     const tableId = this.props.tableId
     
     console.log('tableId: ', tableId)
-    // axios.patch('https://projectdatabase360.herokuapp.com/api/communication', 
-    // { patched_table_id: tableId }
-    // )
-    // .then((res) => console.log(res))
+    
+    axios.patch('https://projectdatabase360.herokuapp.com/api/communication', 
+    { patched_table_id: tableId }
+    )
+    .then((res) => console.log(res))
     
   }
 
   onPointerEnter = () => {
-    
     this.setState({pointerEntered: true, pointerImg: 'reserve_table2.png', bookingTextOpacity: 100})
 
   }
 
   onPointerExit = () => {
-    
     Promise.resolve(this.setState({pointerEntered: false, pointerImg: 'pointer.png', bookingTextOpacity: 0}))
     .then(() => {
       this.animation()
     })
-    
   }
 
   render () {
+
+    if(this.props.tableId === this.props.bookedTableId){
+      return (
+        <View>
+          <Animated.View 
+            billboarding={'on'}
+            style={{
+              transform: [
+                
+                {translateY: this.state.animationValue},
+                {translate: this.props.coords},  
+              ],
+              
+              width: 0.7,
+            }}
+          >
+            <VrButton 
+              onClick={ () => {this.onPointerClick()} }
+              onEnter={this.onPointerEnter}
+              onExit={this.onPointerExit}
+            >
+              <Image
+                style={{
+                  width: 0.7,
+                  height: 0.7,
+                }}
+                source={asset('reserved.png')} 
+              >
+              </Image>
+            </VrButton>
+          </Animated.View>
+        </View>
+);
+    }
     return (
             <View>
               <Animated.View 
                 billboarding={'on'}
                 style={{
                   transform: [
+                    
                     {translateY: this.state.animationValue},
-                    {translate: this.props.coords},
+                    {translate: this.props.coords},  
                   ],
                   
                   width: 0.7,
@@ -109,19 +143,8 @@ class Pointer extends React.Component {
                       width: 0.7,
                       height: 0.7,
                     }}
-                    source={asset(this.state.pointerImg)}
+                    source={asset(this.state.pointerImg)} 
                   >
-                  {/* <Text
-                    style={{
-                        width: 2,
-                        height: 2,
-                        fontSize: 0.2,
-                        opacity: this.state.bookingTextOpacity
-                      }}
-                  
-                  >
-                      Make Reservation?
-                  </Text> */}
                   </Image>
                 </VrButton>
               </Animated.View>
