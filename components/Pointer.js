@@ -63,7 +63,7 @@ class Pointer extends React.Component {
   onPointerClick = () => {
     const tableId = this.props.tableId
     
-    console.log('tableId: ', tableId)
+    
     
     axios.patch('https://projectdatabase360.herokuapp.com/api/communication', 
     { patched_table_id: tableId }
@@ -86,6 +86,47 @@ class Pointer extends React.Component {
 
   render () {
 
+    console.log('bookedTableIds', this.props.bookedTableId)
+
+    if(this.props.bookedTableId.some(table => {
+      return table.id === this.props.tableId
+      })
+      ) {
+      return (
+        <View>
+          <Animated.View 
+            billboarding={'on'}
+            style={{
+              transform: [
+                
+                {translateY: this.state.animationValue},
+                {translate: this.props.coords},  
+              ],
+              
+              width: 0.7,
+            }}
+          >
+            <VrButton 
+              onClick={ () => {this.onPointerClick()} }
+              onEnter={this.onPointerEnter}
+              onExit={this.onPointerExit}
+            >
+              <Image
+                style={{
+                  width: 0.7,
+                  height: 0.7,
+                }}
+                source={asset('reserved_face.png')} 
+              >
+              </Image>
+            </VrButton>
+          </Animated.View>
+        </View>
+      );
+
+    }
+    
+    
     if(this.props.tableId === this.props.bookedTableId){
       return (
         <View>
@@ -111,45 +152,49 @@ class Pointer extends React.Component {
                   width: 0.7,
                   height: 0.7,
                 }}
-                source={asset('reserved.png')} 
+                source={asset('reserved_face.png')} 
               >
               </Image>
             </VrButton>
           </Animated.View>
         </View>
-);
+      );
     }
-    return (
-            <View>
-              <Animated.View 
-                billboarding={'on'}
+    else{
+      return (
+        <View>
+          <Animated.View 
+            billboarding={'on'}
+            style={{
+              transform: [
+                
+                {translateY: this.state.animationValue},
+                {translate: this.props.coords},  
+              ],
+              
+              width: 0.7,
+            }}
+          >
+            <VrButton 
+              onClick={ () => {this.onPointerClick()} }
+              onEnter={this.onPointerEnter}
+              onExit={this.onPointerExit}
+            >
+              <Image
                 style={{
-                  transform: [
-                    
-                    {translateY: this.state.animationValue},
-                    {translate: this.props.coords},  
-                  ],
-                  
                   width: 0.7,
+                  height: 0.7,
                 }}
+                source={asset(this.state.pointerImg)} 
               >
-                <VrButton 
-                  onClick={ () => {this.onPointerClick()} }
-                  onEnter={this.onPointerEnter}
-                  onExit={this.onPointerExit}
-                >
-                  <Image
-                    style={{
-                      width: 0.7,
-                      height: 0.7,
-                    }}
-                    source={asset(this.state.pointerImg)} 
-                  >
-                  </Image>
-                </VrButton>
-              </Animated.View>
-            </View>
-    );
+              </Image>
+            </VrButton>
+          </Animated.View>
+        </View>
+      )
+
+    }
+    ;
   }
 };
 

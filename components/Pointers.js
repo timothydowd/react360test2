@@ -11,6 +11,8 @@ import Pointer from './Pointer'
 
 
 
+
+
 class Pointers extends React.Component {
 
   constructor(props) {
@@ -25,12 +27,11 @@ class Pointers extends React.Component {
   }
 
   componentDidMount(){
-   
+   console.log('in pointers', this.props.bookedTableId)
 
   }
 
-
-
+  
   render () {
 
     const hardCodedTables = {
@@ -56,12 +57,19 @@ class Pointers extends React.Component {
         
         <View>
            
-           { this.props.pointerData.tables.map(table => {
+           { 
              
-             return(
-               <Pointer bookedTableId={this.props.bookedTableId} restaurantId={this.props.restaurantId} key={table.id} tableId={table.id} coords={table.coordinates}/>
-               
-             )
+
+             this.props.pointerData.tables.map(table => {
+             
+            
+                return(
+                  <Pointer  restaurantId={this.props.restaurantId} key={table.id} tableId={table.id} coords={table.coordinates} bookedTableId={this.props.bookedTableId}/>
+                  
+                )
+
+              
+             
            })}
    
            {/* { hardCodedTables.tables.map(table => {

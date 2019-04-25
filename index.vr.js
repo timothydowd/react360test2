@@ -23,7 +23,7 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
       pointer_location: null,
       table_booking: null,
       panoLoading: false,
-      bookedTableId: 2
+      bookedTableId: []
      
     };
   }
@@ -78,25 +78,45 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
   
   }
 
+  getBookedTableId() {
+    // console.log(this.state.justBooked)
+    const bookingIdArray = this.state.justBooked.filter(booking => {
+      if(booking.booked) {
+        return booking.id
+      }
+     })
+     
+     return bookingIdArray
+    
+  }
+
  
   setRestaurantDetailsToState=()=>{
     this.setState({panoLoading: true})
  
       axios.get(`https://projectdatabase360.herokuapp.com/api/restaurants/${this.state.restaurantId}`)
     .then(restaurantData => {
-
       
-      this.setState(
-        {
-          panoImage: {uri:`${'https://cors-anywhere.herokuapp.com/'}${restaurantData.data.restaurant.link_to_360}`},
-          pointer_location: restaurantData.data.restaurant.pointer_location,
-          table_booking: restaurantData.data.restaurant.table_booking,
-          panoLoading: false
-
-        })
+      
+      Promise.resolve(
+        this.setState(
+          {
+            panoImage: {uri:`${'https://cors-anywhere.herokuapp.com/'}${restaurantData.data.restaurant.link_to_360}`},
+            pointer_location: restaurantData.data.restaurant.pointer_location,
+            table_booking: restaurantData.data.restaurant.table_booking,
+            panoLoading: false,
+            justBooked: restaurantData.data.restaurant.table_booking['2019-04-27']
+  
+          }
+        )
+      )
+      .then(() => {
+        this.setState({bookedTableId: this.getBookedTableId()})
+        
+      })
+      
+        
     })
-
-    console.log(this.state.table_booking)
 
   }
 
