@@ -15,6 +15,8 @@ To run the 360 environment in development mode:
 
 ## Built With
 
-React360
+React360 environment by Tim Dowd
 
+React-Native mobile functionality by Susie Varga:  https://github.com/timothydowd/final-project-fend
 
+Express and SQL back end by Tomasz Andrianczyk and Matt Hebb  https://github.com/Matthew632/ProjectDatabase
