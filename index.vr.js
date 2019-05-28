@@ -12,7 +12,7 @@ import Pointers from './components/Pointers'
 
 
 
-export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
+export default class IndexVR extends React.Component {
 
   constructor() {
     super();
@@ -123,4 +123,4 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
     
 };
 
-AppRegistry.registerComponent('GDVR_REACTVR_SITEPOINT_GALLERY', () => GDVR_REACTVR_SITEPOINT_GALLERY);
+AppRegistry.registerComponent('IndexVR', () => IndexVR);

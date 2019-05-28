@@ -6,7 +6,7 @@
 import {VRInstance} from 'react-vr-web';
 
 function init(bundle, parent, options) {
-  const vr = new VRInstance(bundle, 'GDVR_REACTVR_SITEPOINT_GALLERY', parent, {
+  const vr = new VRInstance(bundle, 'IndexVR', parent, {
     // Add custom options here
     ...options,
   });
