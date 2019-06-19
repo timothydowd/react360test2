@@ -34,21 +34,21 @@ class Pointers extends React.Component {
   
   render () {
 
-    const hardCodedTables = {
-      tables: [
-        { id: 1, coordinates: [1.5, -1, -1.5] },
-        { id: 2, coordinates: [0.5, -0.5, -5] },
-        { id: 3, coordinates: [-1, 0.25, -6] },
-        { id: 4, coordinates: [-2.25, 1, -7.25] },
-        { id: 5, coordinates: [-4, 1.75, -9] },
-        { id: 6, coordinates: [-2.5, 2.2, -2.5] },
-        { id: 7, coordinates: [-8.75, 2.7, -3] },
-        { id: 8, coordinates: [-4.5, 3.5, -0.5] },
-        { id: 9, coordinates: [-6, 4.25, 4] },
-        { id: 10, coordinates: [4, 5.2, 1] },
-        { id: 11, coordinates: [-1, 5.5, 1] }
-      ]
-    }
+    // const hardCodedTables = {
+    //   tables: [
+    //     { id: 1, coordinates: [1.5, -1, -1.5] },
+    //     { id: 2, coordinates: [0.5, -0.5, -5] },
+    //     { id: 3, coordinates: [-1, 0.25, -6] },
+    //     { id: 4, coordinates: [-2.25, 1, -7.25] },
+    //     { id: 5, coordinates: [-4, 1.75, -9] },
+    //     { id: 6, coordinates: [-2.5, 2.2, -2.5] },
+    //     { id: 7, coordinates: [-8.75, 2.7, -3] },
+    //     { id: 8, coordinates: [-4.5, 3.5, -0.5] },
+    //     { id: 9, coordinates: [-6, 4.25, 4] },
+    //     { id: 10, coordinates: [4, 5.2, 1] },
+    //     { id: 11, coordinates: [-1, 5.5, 1] }
+    //   ]
+    // }
     
 
     

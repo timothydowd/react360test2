@@ -79,7 +79,7 @@ export default class IndexVR extends React.Component {
   }
 
   getBookedTableId() {
-    // console.log(this.state.justBooked)
+    
     const bookingIdArray = this.state.justBooked.filter(booking => {
       if(booking.booked) {
         return booking.id
