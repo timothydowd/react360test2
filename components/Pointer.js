@@ -5,7 +5,6 @@ import {
   Image,
   View,
   VrButton,
-  Text
 } from 'react-vr';
 import { Easing } from 'react-native'
 import axios from 'axios'

@@ -1,12 +1,9 @@
 import React from 'react';
 import {
   Animated,
-  asset,
-  Image,
   View,
-  VrButton,
 } from 'react-vr';
-import { Easing } from 'react-native'
+
 import Pointer from './Pointer'
 
 

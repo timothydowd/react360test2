@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  asset,
   Pano,
 } from 'react-vr';
 
